@@ -1,10 +1,10 @@
 ---
 import astroLogo from "../assets/astro.svg";
 import background from "../assets/background.svg";
+import SectionBase from "../components/SectionBase.astro"
 ---
 
-<section>
-	<div>
+<SectionBase class="section-main">
 		<img class="img-guillermo-mora" src="src/images/guillermo-mora-mortes.jpg" alt="Guillermo Mora Mortes" />
 		<p>
 			I'm Guillermo Mora Mortes, a software developer based in Valencia.
@@ -13,23 +13,18 @@ import background from "../assets/background.svg";
 			I build full-stack applications focused on creating useful,
 			accessible software for everyone.
 		</p>
-	</div>
-</section>
+</SectionBase>
 
 <style>
 	section {
-		background-color: darkblue;
-		display: flex;
-		justify-content: center;
-		padding-top: 10dvw;
-		padding-left: 16px;
-		padding-right: 16px;
-		width: 100%;
+		background-color: red;
 	}
 	.img-guillermo-mora {
 		aspect-ratio: 1, 1;
 		border-radius: 100%;
 		max-width: 20dvw;
 		height: auto;
+		user-select: none;
+		-webkit-user-drag: none;
 	}
 </style>
