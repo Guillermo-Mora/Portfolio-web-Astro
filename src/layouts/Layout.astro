@@ -1,3 +1,6 @@
+---
+import '../styles/global.css';
+---
 <!doctype html>
 <html lang="en">
 	<head>
@@ -20,15 +23,16 @@
 	}
 	html {
 		margin: 0;
-		width: 100%
+		width: 100%;
+		scroll-behavior: smooth;
 	}
 	body {
 		margin: 0;
 		width: 100%;
 		font-family: JetBrainsMono;
         display: flex;
+		flex-direction: column;
 		justify-content: center;
-		color: aliceblue;
+		color: var(--c1);
 	}
-	.section-main
 </style>

@@ -1,0 +1,27 @@
+<section>
+	<div class="content-container" id="projects">
+		<slot />
+	</div>
+</section>
+
+<style>
+	section {
+        box-sizing: border-box;
+		width: 100%;
+		background-color: var(--c6);
+		display: flex;
+		justify-content: center;
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+		padding-left: 16px;
+		padding-right: 16px;
+		.content-container {
+            width: 100%;
+			max-width: 700px;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			gap: 3rem;
+		}
+	}
+</style>

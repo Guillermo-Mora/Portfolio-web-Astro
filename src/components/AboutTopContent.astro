@@ -1,0 +1,28 @@
+---
+import guillermoMoraImg from "../images/guillermo-mora-mortes.jpg";
+import Terminal from "./Terminal.astro";
+---
+
+<div class="container">
+    <img class="img-guillermo-mora" src={guillermoMoraImg.src} />
+    <!--<span>Aqui a la derecha de la imagen añadir una animación css creada con ia de bloques de lego cayendo y construyendo algo</span> -->
+    <Terminal />
+</div>
+<style>
+    .container {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 4rem;
+        gap: 55px;
+        gap: 20%;
+    }
+    .img-guillermo-mora {
+        aspect-ratio: 1 / 1;
+        max-width: 20dvw;
+        height: auto;
+        border: 4px solid var(--c2);
+        box-shadow: 4px 4px 0 0 var(--c4);
+        margin-bottom: 10px;
+    }
+</style>

@@ -1,0 +1,55 @@
+---
+import SectionTitle from "../components/SectionTitle.astro";
+
+interface Contact {
+    domain?: string;
+    profile: string;
+    url: string;
+}
+
+interface Props {
+    contacts: Contact[];
+}
+
+const { contacts } = Astro.props;
+---
+
+<div id="connect">
+    <SectionTitle title="CONNECT" />
+    <ul>
+        {
+            contacts.map((contact) => (
+                <li>
+                    <a href={contact.url}, target="_blank">
+                        {contact.domain != null ? (
+                            <span class="domain">{contact.domain}/</span>
+                        ) : null}
+                        <span>{contact.profile}</span>
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</div>
+<style>
+    ul {
+        list-style: none;
+        margin: 0;
+        margin-top: 1.5rem;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .domain {
+        color: var(--c3);
+    }
+    a,
+    a:visited {
+        color: inherit;
+        text-decoration: none;
+    }
+    [id] {
+		scroll-margin-top: 53px;
+	}
+</style>
