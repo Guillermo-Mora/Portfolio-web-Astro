@@ -15,6 +15,7 @@ import guimorMusicImg from "../images/GuimorMusicPlayer.webp";
 import tuxImg from "../images/TuxSmall.svg.webp";
 import { Image } from "astro:assets";
 import Stack from "../components/Stack.astro";
+import CurrentState from "../components/CurrentState.astro";
 
 const stack = [
 	{
@@ -182,6 +183,9 @@ const projects = [
 	},
 ];
 
+const currentState =
+	"Open to junior roles and internships in Valencia or remote";
+
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
@@ -220,15 +224,14 @@ const projects = [
 				/> and servers enthusiast (I host my own at home :D), I like to understand
 				how things work, and then make them feel like mine.
 			</p>
-			<p>
-				I speak Spanish and Catalan natively, and English at an advanced
-				level.
-			</p>
-			<div class="current-state">
-			<small>
-				Open to junior roles and internships in Valencia or remote
-			</small>
+			<div class="spoken-languages">
+				<div></div>
+				<span>
+					I speak Spanish and Catalan natively, and English at an
+					advanced level.
+				</span>
 			</div>
+			<CurrentState text={currentState} />
 		</div>
 		<Stack groups={stack} note="" />
 		<Experience experiences={experiences} />
@@ -241,13 +244,19 @@ const projects = [
 </Layout>
 
 <style>
-	.current-state {
-		width: fit-content;
-		padding: 8px;
-		background-color: var(--c2);
-		color: var(--c5);
-		box-shadow: 4px 4px 0 0 var(--c4);
-		font-weight: bold;
+	.spoken-languages {
+		display: flex;
+		flex-direction: row;
+		gap: 16px;
+		margin-bottom: 16px;
+		div {
+			flex-shrink: 0;
+			margin-top: 5px;
+			width: 8px;
+			height: 8px;
+			background-color: var(--c2);
+			box-shadow: 3px 3px 0 0 var(--c4);
+		}
 	}
 	.about-me {
 		margin-top: 53px;

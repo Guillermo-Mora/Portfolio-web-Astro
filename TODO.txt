@@ -10,11 +10,14 @@ Lo que más falta
 
 Una sección de skills o tecnologías. Ahora el stack solo aparece suelto dentro de cada proyecto. Quien revisa el portafolio rápido no ve de un vistazo qué dominas (Kotlin, Android, KMP, Ktor, PostgreSQL, Java, C#, Unity, web...). Bastaría un bloque corto agrupado por áreas, por ejemplo Backend, Mobile, Web y Datos/BI. [- Hecho]
 
-- Un CV descargable. Es lo primero que suele buscar un reclutador y ahora no hay ninguno.
-
-- Si estás buscando trabajo, decirlo. Una frase en About como “Disponible para prácticas o puestos junior desde X” ayuda mucho, y el contacto sin eso queda algo neutro.
+- Si estás buscando trabajo, decirlo. Una frase en About como “Disponible para prácticas o puestos junior desde X” ayuda mucho, y el contacto sin eso queda algo neutro. [- Hecho]
 
 - No aparecen idiomas. Escribes el portafolio en inglés y vives en Valencia, así que indicar tu nivel de inglés (y de valenciano, si aplica) suma. [- Hecho]
+
+
+- Un CV descargable. Es lo primero que suele buscar un reclutador y ahora no hay ninguno.
+
+- Soporte multiidioma basado en el lenguaje del navegador automáticamente
 
 
 Contenido de proyectos y experiencia

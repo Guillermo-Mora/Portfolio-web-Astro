@@ -2,12 +2,23 @@
 import guillermoMoraImg from "../images/guillermo-mora-mortes.jpg";
 import Terminal from "./Terminal.astro";
 import { Image } from "astro:assets";
-
 ---
 
 <div class="container">
-    <Image class="img-guillermo-mora" src={guillermoMoraImg} alt="Guillerm Mora Mortes" loading="eager" />
-    <Terminal />
+    <Image
+        class="img-guillermo-mora"
+        src={guillermoMoraImg}
+        alt="Guillerm Mora Mortes"
+        loading="eager"
+    />
+    <div class="terminal-cv">
+        <Terminal />
+        <div class="cv">
+            <a href="">
+                <small>CV</small>
+            </a>
+        </div>
+    </div>
 </div>
 <style>
     .container {
@@ -25,5 +36,28 @@ import { Image } from "astro:assets";
         border: 4px solid var(--c2);
         box-shadow: 4px 4px 0 0 var(--c4);
         margin-bottom: 10px;
+    }
+    .terminal-cv {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+    .cv {
+        box-sizing: border-box;
+        width: 100%;
+        text-align: center;
+        box-shadow: 4px 4px 0 0 var(--c4);
+        font-weight: bold;
+        a {
+            background-color: var(--c2);
+            border: 2px solid var(--c1);
+            box-sizing: border-box;
+            width: 100%;
+            display: inline-block;
+            padding: 8px;
+            text-decoration: none;
+            color: var(--c5);
+        }
     }
 </style>
