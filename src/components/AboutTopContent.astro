@@ -1,11 +1,12 @@
 ---
 import guillermoMoraImg from "../images/guillermo-mora-mortes.jpg";
 import Terminal from "./Terminal.astro";
+import { Image } from "astro:assets";
+
 ---
 
 <div class="container">
-    <img class="img-guillermo-mora" src={guillermoMoraImg.src} />
-    <!--<span>Aqui a la derecha de la imagen añadir una animación css creada con ia de bloques de lego cayendo y construyendo algo</span> -->
+    <Image class="img-guillermo-mora" src={guillermoMoraImg} alt="Guillerm Mora Mortes" loading="eager" />
     <Terminal />
 </div>
 <style>

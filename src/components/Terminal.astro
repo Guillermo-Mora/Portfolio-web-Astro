@@ -29,7 +29,6 @@ const emptyBar = `[${EMPTY.repeat(BLOCKS)}]`;
 
 <style>
     .terminal {
-        /* Paleta estilo terminal de SO (Windows Terminal / consola Linux) */
         --term-bg: #0c0c0c;
         --term-fg: #cccccc;
         --term-border: #3a3a3a;
@@ -41,15 +40,11 @@ const emptyBar = `[${EMPTY.repeat(BLOCKS)}]`;
         border: 4px solid var(--term-border);
         box-shadow: 4px 4px 0 0 var(--term-shadow);
         display: grid;
-        /* Columna 1: ancho del texto más largo. Columna 2: barra + % */
         grid-template-columns: max-content max-content;
         column-gap: 4px;
         justify-content: start;
         .line {
-            /* Los hijos pasan a ser celdas del grid del terminal,
-               así todas las barras quedan alineadas en la misma columna */
             display: contents;
-            /* Oculta la línea pero reserva su espacio (sin saltos de layout) */
             visibility: hidden;
         }
         .line.is-visible {
@@ -64,7 +59,6 @@ const emptyBar = `[${EMPTY.repeat(BLOCKS)}]`;
             white-space: pre;
         }
         .pct {
-            /* Ancho fijo para que no "baile" entre 0%, 20% y 100% */
             min-width: 4ch;
             text-align: right;
         }
@@ -72,8 +66,8 @@ const emptyBar = `[${EMPTY.repeat(BLOCKS)}]`;
 </style>
 
 <script>
-    const FILL_MS = 3000; // tiempo de 0% a 100% por línea
-    const RESTART_MS = 3000; // pausa tras completar la última línea
+    const FILL_MS = 3000;
+    const RESTART_MS = 3000;
 
     const terminal = document.querySelector<HTMLElement>(".terminal");
 
@@ -82,23 +76,25 @@ const emptyBar = `[${EMPTY.repeat(BLOCKS)}]`;
         const filledChar = terminal.dataset.filled ?? "■";
         const emptyChar = terminal.dataset.empty ?? "□";
         const stepMs = FILL_MS / blocks;
-        const lines = Array.from(terminal.querySelectorAll<HTMLElement>(".line"));
+        const lines = Array.from(
+            terminal.querySelectorAll<HTMLElement>(".line"),
+        );
 
-        const wait = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+        const wait = (ms: number) =>
+            new Promise<void>((r) => setTimeout(r, ms));
 
-        // Barra y % se actualizan juntos, una sola vez por bloque
         const render = (line: HTMLElement, filled: number) => {
             const bar = line.querySelector<HTMLElement>(".bar");
             const pct = line.querySelector<HTMLElement>(".pct");
             if (bar) {
                 bar.textContent = `${filledChar.repeat(filled)}${emptyChar.repeat(blocks - filled)}`;
             }
-            if (pct) pct.textContent = `${Math.round((filled / blocks) * 100)}%`;
+            if (pct)
+                pct.textContent = `${Math.round((filled / blocks) * 100)}%`;
         };
 
         const run = async () => {
             while (terminal.isConnected) {
-                // Reinicio de golpe
                 for (const line of lines) {
                     line.classList.remove("is-visible");
                     render(line, 0);

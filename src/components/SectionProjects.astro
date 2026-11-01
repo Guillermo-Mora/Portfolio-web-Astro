@@ -1,27 +1,177 @@
+---
+import { Image } from "astro:assets";
+
+interface Project {
+    title: string;
+    imageSrc?: ImageMetadata;
+    description: string;
+    stack: string;
+    buttons?: ButtonOption[];
+}
+
+interface ButtonOption {
+    text: string;
+    url: string;
+}
+
+interface Props {
+    projects: Project[];
+}
+
+const { projects } = Astro.props;
+
+const splitStack = (stack: string) =>
+    stack
+        .split(",")
+        .map((tech) => tech.trim())
+        .filter(Boolean);
+---
+
 <section>
-	<div class="content-container" id="projects">
-		<slot />
-	</div>
+    <div class="content-container" id="projects">
+        <ul class="projects">
+            {
+                projects.map((project) => (
+                    <li>
+                        <article class="project">
+                            {project.imageSrc && (
+                                <img
+                                    class="project-image"
+                                    src={project.imageSrc.src}
+                                    alt={`Screenshot of ${project.title}`}
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            )}
+                            <div class="project-body">
+                                <h3 class="project-title">{project.title}</h3>
+                                <p class="project-description">
+                                    {project.description}
+                                </p>
+                                <ul class="stack" aria-label="Tech stack">
+                                    {splitStack(project.stack).map((tech) => (
+                                        <li>
+                                            <small>{tech}</small>
+                                        </li>
+                                    ))}
+                                </ul>
+                                {project.buttons &&
+                                    project.buttons.length > 0 && (
+                                        <div class="buttons">
+                                            {project.buttons.map((button) => (
+                                                <a
+                                                    class:list={["button"]}
+                                                    href={button.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <small>{button.text}</small>
+                                                </a>
+                                            ))}
+                                        </div>
+                                    )}
+                            </div>
+                        </article>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
 </section>
 
 <style>
-	section {
+    section {
         box-sizing: border-box;
-		width: 100%;
-		background-color: var(--c6);
-		display: flex;
-		justify-content: center;
-		padding-top: 4rem;
-		padding-bottom: 4rem;
-		padding-left: 16px;
-		padding-right: 16px;
-		.content-container {
+        width: 100%;
+        background-color: var(--c6);
+        display: flex;
+        justify-content: center;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        padding-left: 16px;
+        padding-right: 16px;
+        .content-container {
             width: 100%;
-			max-width: 700px;
-			display: flex;
-			justify-content: center;
-			flex-direction: column;
-			gap: 3rem;
-		}
-	}
+            max-width: 700px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 3rem;
+        }
+    }
+
+    .projects {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .project {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .project-image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        box-sizing: border-box;
+        border: 4px solid var(--c2);
+        box-shadow: 4px 4px 0 0 var(--c4);
+    }
+
+    .project-body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .project-title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: bold;
+        color: var(--c3);
+    }
+
+    .project-description {
+        margin: 0;
+    }
+
+    .stack {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        li {
+            padding: 2px 8px;
+            border: 2px solid var(--c4);
+            color: var(--c3);
+        }
+        small {
+            font-size: 0.75rem;
+        }
+    }
+    .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 0.25rem;
+    }
+    .button {
+        background-color: var(--c2);
+        color: var(--c6);
+        box-shadow: 4px 4px 0 0 var(--c4);
+        display: inline-block;
+        padding: 8px 12px;
+        text-decoration: none;
+        font-weight: bold;
+    }
 </style>

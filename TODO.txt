@@ -1,0 +1,25 @@
+- Implement multilanguage (English and Spanish based on the user's browser).
+- Add pixelated static transition to enter and exit the projects section.
+- In the education section, fix the naming in English, as currently is not accurate.
+- Add the Tennis Umpire Project.
+
+
+Revisé solo el contenido. En general está claro, es honesto y tiene buenos proyectos. Esto es lo que añadiría, de más a menos importante.
+
+Lo que más falta
+
+Una sección de skills o tecnologías. Ahora el stack solo aparece suelto dentro de cada proyecto. Quien revisa el portafolio rápido no ve de un vistazo qué dominas (Kotlin, Android, KMP, Ktor, PostgreSQL, Java, C#, Unity, web...). Bastaría un bloque corto agrupado por áreas, por ejemplo Backend, Mobile, Web y Datos/BI. [- Hecho]
+
+- Un CV descargable. Es lo primero que suele buscar un reclutador y ahora no hay ninguno.
+
+- Si estás buscando trabajo, decirlo. Una frase en About como “Disponible para prácticas o puestos junior desde X” ayuda mucho, y el contacto sin eso queda algo neutro.
+
+- No aparecen idiomas. Escribes el portafolio en inglés y vives en Valencia, así que indicar tu nivel de inglés (y de valenciano, si aplica) suma. [- Hecho]
+
+
+Contenido de proyectos y experiencia
+
+LibreGuardia y la experiencia en UPV parecen el mismo proyecto, pero no se conectan. Conviene enlazarlos o aclarar que uno es la práctica y el otro el producto. Si se usa de verdad en tu centro, dilo: es tu mejor argumento y ahora no aparece.
+Guimor Music (“A visual music frontend.”) es muy escueto comparado con el resto. Añade una frase sobre qué hace o qué aprendiste.
+Las descripciones cuentan qué es, pero no qué decisión o reto tuviste. Una línea por proyecto con algo concreto, como “sincronización multiplataforma con KMP” o “arquitectura con Room”, haría las descripciones más memorables.
+La fecha de Ahora Software (“May 2025”) parece un solo mes. Si fue más tiempo, indica el periodo, para que no parezca incompleta frente a las otras dos.

@@ -1,11 +1,12 @@
 ---
-import SectionTitle from '../components/SectionTitle.astro'
+import SectionTitle from "../components/SectionTitle.astro";
 
 interface Education {
     title: string;
     place: string;
     location: string;
     date: string;
+    grade: string;
 }
 
 interface Props {
@@ -33,6 +34,8 @@ const { educations } = Astro.props;
                                     {education.place} -
                                     <small> {education.location}</small>
                                 </span>
+                                <br />
+                                <span>{education.grade}</span>
                             </p>
                         </div>
                         <div>
@@ -84,7 +87,7 @@ const { educations } = Astro.props;
         white-space: nowrap;
     }
     @media (max-width: 500px) {
-        .place-date{
+        .place-date {
             flex-direction: column;
             gap: 0.25;
         }

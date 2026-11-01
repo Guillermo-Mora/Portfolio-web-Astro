@@ -4,14 +4,44 @@ import Experience from "../components/Experience.astro";
 import Education from "../components/Education.astro";
 import Contact from "../components/Contact.astro";
 import Layout from "../layouts/Layout.astro";
-import guillermoMoraImg from "../images/guillermo-mora-mortes.jpg";
 import SectionProjects from "../components/SectionProjects.astro";
 import SectionFinal from "../components/SectionFinal.astro";
 import AboutTopContent from "../components/AboutTopContent.astro";
+import libreGuardiaImg from "../images/Liberguardia_Project.webp";
+import tennisUmpireImg from "../images/TennisUmpire_Project.webp";
+import karateSharpImg from "../images/KarateSharp_Project.webp";
+import termTetrisImg from "../images/termTetris.webp";
+import guimorMusicImg from "../images/GuimorMusicPlayer.webp";
+import tuxImg from "../images/TuxSmall.svg.webp";
+import { Image } from "astro:assets";
+import Stack from "../components/Stack.astro";
+
+const stack = [
+	{
+		label: "LANGUAGES",
+		items: ["Kotlin", "Java", "Bash", "HTML", "CSS", "JavaScript"],
+	},
+	{
+		label: "MOBILE",
+		items: ["Android", "Jetpack Compose", "KMP", "Room"],
+	},
+	{
+		label: "BACKEND & DATA",
+		items: ["Ktor", "Spring Boot", "PostgreSQL", "MySQL"],
+	},
+	{
+		label: "TOOLS",
+		items: ["Linux", "Terminal", "Git", "GitHub", "Postman"],
+	},
+	{
+		label: "AI",
+		items: ["Claude", "DeepSeek"],
+	},
+];
 
 const experiences = [
 	{
-		role: "Full-Stack Development",
+		role: "Full-Stack Development [Internship]",
 		company: "UPV",
 		location: "Valencia, Spain",
 		summary:
@@ -19,7 +49,7 @@ const experiences = [
 		date: "April - June 2026",
 	},
 	{
-		role: "Software Development & Business Intelligence",
+		role: "Software Development & Business Intelligence [Internship]",
 		company: "Ahora Software",
 		location: "Valencia, Spain",
 		summary:
@@ -27,7 +57,7 @@ const experiences = [
 		date: "May 2025",
 	},
 	{
-		role: "Web Development & Technical Support",
+		role: "Web Development & Technical Support [Internship]",
 		company: "Doctor Phone",
 		location: "Valencia, Spain",
 		summary:
@@ -38,22 +68,25 @@ const experiences = [
 
 const educations = [
 	{
-		title: "Higher FP DAM",
+		title: "Higher Technician in Multi-platform Applications Development (DAM)",
 		place: "IES Serpis",
 		location: "Valencia, Spain",
 		date: "2024 - 2026",
+		grade: "8.94/10 - Distinction",
 	},
 	{
-		title: "Medium FP SMR",
+		title: "Technician in Microcomputer Systems and Networks (SMR)",
 		place: "IES Serpis",
 		location: "Valencia, Spain",
 		date: "2022 - 2024",
+		grade: "8.92/10",
 	},
 	{
-		title: "Obligatory Secondary Education",
+		title: "Compulsory Secondary Education",
 		place: "IES La Patacona",
 		location: "Valencia, Spain",
 		date: "2017 - 2021",
+		grade: "8.2/10",
 	},
 ];
 
@@ -71,6 +104,81 @@ const contacts = [
 		domain: "linkedin.com",
 		profile: "Guillermo-Mora",
 		url: "https://www.linkedin.com/in/guillermo-mora-mortes-b071a034a/",
+	},
+];
+
+const projects = [
+	{
+		title: "LibreGuardia",
+		imageSrc: libreGuardiaImg,
+		description:
+			"Software for managing teacher absences and on-call duties in educational centers. Designed to centralize scheduling, track substitutions, and give staff a clear view of daily coverage needs.",
+		stack: "Kotlin, Ktor, Exposed, PostgreSQL, KMP, Jetpack Compose, Android",
+		buttons: [
+			{
+				text: "Github",
+				url: "https://github.com/Guillermo-Mora/libreguardia",
+			},
+		],
+	},
+	{
+		title: "Tennis Umpire",
+		imageSrc: tennisUmpireImg,
+		description:
+			"Native Android app for live tennis scoring and match management, with player and results tracking.",
+		stack: "Kotlin, Jetpack Compose, Room, Android",
+		buttons: [
+			{
+				text: "Github",
+				url: "https://github.com/Guillermo-Mora/TennisUmpire",
+			},
+		],
+	},
+	{
+		title: "Karate Sharp",
+		imageSrc: karateSharpImg,
+		description:
+			"Action-platformer where you control a karate fighter on a mission to rescue the city's heroes.",
+		stack: "Unity, C#",
+		buttons: [
+			{
+				text: "Github",
+				url: "https://github.com/Guillermo-Mora/Karate-Sharp",
+			},
+			{
+				text: "Play",
+				url: "https://play.unity.com/en/games/007d244b-08bd-49e4-8a24-b8cbff35e84f/web-karatesharp",
+			},
+		],
+	},
+	{
+		title: "TermTetris",
+		imageSrc: termTetrisImg,
+		description:
+			"A recreation of the classic Tetris, built in Java with the Lanterna library to render the game entirely in the terminal.",
+		stack: "Java",
+		buttons: [
+			{
+				text: "Github",
+				url: "https://github.com/Guillermo-Mora/TermTetris",
+			},
+		],
+	},
+	{
+		title: "Guimor Music",
+		imageSrc: guimorMusicImg,
+		description: "A visual music frontend.",
+		stack: "HTML, CSS, JavaScript",
+		buttons: [
+			{
+				text: "Github",
+				url: "https://github.com/Guillermo-Mora/guimor-web-music-player.github.io",
+			},
+			{
+				text: "View",
+				url: "https://guillermo-mora.github.io/guimor-web-music-player.github.io/",
+			},
+		],
 	},
 ];
 
@@ -99,25 +207,33 @@ const contacts = [
 		<div class="about-me" id="about">
 			<AboutTopContent />
 			<p>
-				I'm Guillermo Mora Mortes, a software developer based in
-				Valencia.
-				<br />
-				I build full-stack applications focused on creating useful, accessible
-				software for everyone.
+				I’m Guillermo Mora Mortes, a full-stack developer based in
+				Valencia. I build useful, accessible software end to end, from
+				the interface to the system running behind it.
 			</p>
 			<hr />
 			<p>
-				I'm passionate about building software that people actually use
-				— and I bring a creative approach to everything I make.
+				Creative by nature and a Linux <Image
+					src={tuxImg}
+					alt="TUX"
+					loading="eager"
+				/> and servers enthusiast (I host my own at home :D), I like to understand
+				how things work, and then make them feel like mine.
 			</p>
+			<p>
+				I speak Spanish and Catalan natively, and English at an advanced
+				level.
+			</p>
+			<div class="current-state">
+			<small>
+				Open to junior roles and internships in Valencia or remote
+			</small>
+			</div>
 		</div>
-		<Experience experiences={experiences}/>
+		<Stack groups={stack} note="" />
+		<Experience experiences={experiences} />
 	</SectionMain>
-	<!--Hacer transición de entrada con degradado de pixeles creada con css-->
-	<SectionProjects>
-		<div style="height: 300px;"></div>
-	</SectionProjects>
-	<!--Hacer transición de salida con degradado de pixeles creada con css-->
+	<SectionProjects projects={projects} />
 	<SectionFinal>
 		<Education educations={educations} />
 		<Contact contacts={contacts} />
@@ -125,6 +241,14 @@ const contacts = [
 </Layout>
 
 <style>
+	.current-state {
+		width: fit-content;
+		padding: 8px;
+		background-color: var(--c2);
+		color: var(--c5);
+		box-shadow: 4px 4px 0 0 var(--c4);
+		font-weight: bold;
+	}
 	.about-me {
 		margin-top: 53px;
 	}
