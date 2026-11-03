@@ -1,201 +1,226 @@
 ---
 import Index from "../../components/Index.astro";
-import cv from "../../pages/cv/CV_GuillermoMoraMortes_es.pdf";
+import cvSrc from "../../pages/cv/CV_GuillermoMoraMortes_es.pdf";
 
-const stack = [
-	{
-		label: "LANGUAGES",
-		items: ["Kotlin", "Java", "SQL", "Bash", "HTML/CSS", "JavaScript"],
-	},
-	{
-		label: "MOBILE",
-		items: ["Android", "Jetpack Compose", "Kotlin Multiplatform", "Room"],
-	},
-	{
-		label: "BACKEND & DATA",
-		items: [
-			"Ktor",
-			"Spring Boot",
-			"PostgreSQL",
-			"MySQL",
-			"Exposed",
-			"SQL Server",
-		],
-	},
-	{
-		label: "TOOLS",
-		items: [
-			"Linux",
-			"Terminal",
-			"Git/GitHub",
-			"Postman",
-			"Docker",
-			"Gradle",
-			"Testcontainers",
-		],
-	},
-	{
-		label: "AI",
-		items: ["Claude", "DeepSeek"],
-	},
-];
+const headerEntries = ["YO", "EXPERIENCIA", "PROYECTOS", "CONTACTO"];
 
-const experiences = [
-	{
-		role: "Full-Stack Development [Internship]",
-		company: "UPV",
-		location: "Valencia, Spain",
-		summary:
-			"Designed and built a full-stack app from scratch to manage teacher absences and on-call duties for my school.",
-		date: "April - June 2026",
-	},
-	{
-		role: "Software Development & Business Intelligence [Internship]",
-		company: "Ahora Software",
-		location: "Valencia, Spain",
-		summary:
-			"Worked with BI tools, databases and frontend, and built low-code applications.",
-		date: "May 2025",
-	},
-	{
-		role: "Web Development & Technical Support [Internship]",
-		company: "Doctor Phone",
-		location: "Valencia, Spain",
-		summary:
-			"Built the shop's website and provided technical support: customer service, device repair and equipment maintenance.",
-		date: "April - June 2024",
-	},
-];
+const stack = {
+	title: "TECNOLOGÍAS",
+	groups: [
+		{
+			label: "LENGUAJES",
+			items: ["Kotlin", "Java", "SQL", "Bash", "HTML/CSS", "JavaScript"],
+		},
+		{
+			label: "MÓVIL",
+			items: [
+				"Android",
+				"Jetpack Compose",
+				"Kotlin Multiplatform",
+				"Room",
+			],
+		},
+		{
+			label: "BACKEND Y DATOS",
+			items: [
+				"Ktor",
+				"Spring Boot",
+				"PostgreSQL",
+				"MySQL",
+				"Exposed",
+				"SQL Server",
+			],
+		},
+		{
+			label: "HERRAMIENTAS",
+			items: [
+				"Linux",
+				"Terminal",
+				"Git/GitHub",
+				"Postman",
+				"Docker",
+				"Gradle",
+				"Testcontainers",
+			],
+		},
+		{
+			label: "IA",
+			items: ["Claude", "DeepSeek"],
+		},
+	],
+};
 
-const educations = [
-	{
-		title: "Higher Technician in Multi-platform Applications Development (DAM)",
-		place: "IES Serpis",
-		location: "Valencia, Spain",
-		date: "2024 - 2026",
-		grade: "8.94/10 - Distinction",
-	},
-	{
-		title: "Technician in Microcomputer Systems and Networks (SMR)",
-		place: "IES Serpis",
-		location: "Valencia, Spain",
-		date: "2022 - 2024",
-		grade: "8.92/10",
-	},
-	{
-		title: "Compulsory Secondary Education",
-		place: "IES La Patacona",
-		location: "Valencia, Spain",
-		date: "2017 - 2021",
-		grade: "8.2/10",
-	},
-];
+const experiences = {
+	title: headerEntries[1],
+	sections: [
+		{
+			role: "Desarrollo Full-Stack [Prácticas]",
+			company: "UPV",
+			location: "Valencia, España",
+			summary:
+				"Diseñé y construí desde cero una aplicación full-stack para gestionar las ausencias del profesorado y las guardias de mi centro.",
+			date: "Abril - Junio 2026",
+		},
+		{
+			role: "Desarrollo de Software y Business Intelligence [Prácticas]",
+			company: "Ahora Software",
+			location: "Valencia, España",
+			summary:
+				"Trabajé con herramientas de BI, bases de datos y frontend, y construí aplicaciones low-code.",
+			date: "Mayo 2025",
+		},
+		{
+			role: "Desarrollo Web y Soporte Técnico [Prácticas]",
+			company: "Doctor Phone",
+			location: "Valencia, España",
+			summary:
+				"Creé el sitio web de la tienda y realizé soporte técnico: atención al cliente, reparación de dispositivos y mantenimiento de equipos.",
+			date: "Abril - Junio 2024",
+		},
+	],
+};
 
-const contacts = [
-	{
-		profile: "guillermomora@tutamail.com",
-		url: "mailto:guillermomora@tutamail.com",
-	},
-	{
-		domain: "github.com",
-		profile: "Guillermo-Mora",
-		url: "https://github.com/Guillermo-Mora",
-	},
-	{
-		domain: "linkedin.com",
-		profile: "Guillermo-Mora",
-		url: "https://www.linkedin.com/in/guillermo-mora-mortes-b071a034a/",
-	},
-];
+const educations = {
+	title: "FORMACIÓN",
+	sections: [
+		{
+			title: "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)",
+			place: "IES Serpis",
+			location: "Valencia, España",
+			date: "2024 - 2026",
+			grade: "8,94/10 - Distinción",
+		},
+		{
+			title: "Técnico en Sistemas Microinformáticos y Redes (SMR)",
+			place: "IES Serpis",
+			location: "Valencia, España",
+			date: "2022 - 2024",
+			grade: "8,92/10",
+		},
+		{
+			title: "Educación Secundaria Obligatoria",
+			place: "IES La Patacona",
+			location: "Valencia, España",
+			date: "2017 - 2021",
+			grade: "8,2/10",
+		},
+	],
+};
 
-const projects = [
-	{
-		title: "LibreGuardia",
-		description:
-			"Software for managing teacher absences and on-call duties in educational centers. Designed to centralize scheduling, track substitutions, and give staff a clear view of daily coverage needs.",
-		stack: "Kotlin, Ktor, Exposed, PostgreSQL, KMP, Jetpack Compose, Android",
-		inDevelopment: true,
-		buttons: [
-			{
-				text: "Github",
-				url: "https://github.com/Guillermo-Mora/libreguardia",
-			},
-		],
-	},
-	{
-		title: "Tennis Umpire",
-		description:
-			"Native Android app for live tennis scoring and match management, with player and results tracking.",
-		stack: "Kotlin, Jetpack Compose, Room, Android",
-		inDevelopment: true,
-		buttons: [
-			{
-				text: "Github",
-				url: "https://github.com/Guillermo-Mora/TennisUmpire",
-			},
-		],
-	},
-	{
-		title: "Karate Sharp",
-		description:
-			"Action-platformer where you control a karate fighter on a mission to rescue the city's heroes.",
-		stack: "Unity, C#",
-		inDevelopment: false,
-		buttons: [
-			{
-				text: "Github",
-				url: "https://github.com/Guillermo-Mora/Karate-Sharp",
-			},
-			{
-				text: "Play",
-				url: "https://play.unity.com/en/games/007d244b-08bd-49e4-8a24-b8cbff35e84f/web-karatesharp",
-			},
-		],
-	},
-	{
-		title: "TermTetris",
-		description:
-			"A recreation of the classic Tetris, built in Java with the Lanterna library to render the game entirely in the terminal.",
-		stack: "Java",
-		inDevelopment: false,
-		buttons: [
-			{
-				text: "Github",
-				url: "https://github.com/Guillermo-Mora/TermTetris",
-			},
-		],
-	},
-	{
-		title: "Guimor Music",
-		description: "A visual music frontend.",
-		stack: "HTML, CSS, JavaScript",
-		inDevelopment: false,
-		buttons: [
-			{
-				text: "Github",
-				url: "https://github.com/Guillermo-Mora/guimor-web-music-player.github.io",
-			},
-			{
-				text: "View",
-				url: "https://guillermo-mora.github.io/guimor-web-music-player.github.io/",
-			},
-		],
-	},
-];
+const contacts = {
+	title: headerEntries[3],
+	sections: [
+		{
+			profile: "guillermomora@tutamail.com",
+			url: "mailto:guillermomora@tutamail.com",
+		},
+		{
+			domain: "github.com",
+			profile: "Guillermo-Mora",
+			url: "https://github.com/Guillermo-Mora",
+		},
+		{
+			domain: "linkedin.com",
+			profile: "Guillermo-Mora",
+			url: "https://www.linkedin.com/in/guillermo-mora-mortes-b071a034a/",
+		},
+	],
+};
+
+const projects = {
+	inDevelopmentText: "En desarrollo",
+	sections: [
+		{
+			title: "LibreGuardia",
+			description:
+				"Software para gestionar ausencias y guardias del profesorado en centros educativos. Diseñado para centralizar horarios, hacer seguimiento de las sustituciones y ofrecer al personal una visión clara de las necesidades diarias de cobertura.",
+			stack: "Kotlin, Ktor, Exposed, PostgreSQL, KMP, Jetpack Compose, Android",
+			inDevelopment: true,
+			buttons: [
+				{
+					text: "Github",
+					url: "https://github.com/Guillermo-Mora/libreguardia",
+				},
+			],
+		},
+		{
+			title: "Tennis Umpire",
+			description:
+				"Aplicación Android nativa para llevar marcadores de tenis en vivo, gestión de partidos, seguimiento de jugadores y resultados.",
+			stack: "Kotlin, Jetpack Compose, Room, Android",
+			inDevelopment: true,
+			buttons: [
+				{
+					text: "Github",
+					url: "https://github.com/Guillermo-Mora/TennisUmpire",
+				},
+			],
+		},
+		{
+			title: "Karate Sharp",
+			description:
+				"Juego de acción y plataformas en el que controlas a un luchador de kárate en una misión para rescatar a los héroes de la ciudad.",
+			stack: "Unity, C#",
+			inDevelopment: false,
+			buttons: [
+				{
+					text: "Github",
+					url: "https://github.com/Guillermo-Mora/Karate-Sharp",
+				},
+				{
+					text: "Jugar",
+					url: "https://play.unity.com/en/games/007d244b-08bd-49e4-8a24-b8cbff35e84f/web-karatesharp",
+				},
+			],
+		},
+		{
+			title: "TermTetris",
+			description:
+				"Recreación del clásico Tetris, creada en Java usando la librería Lanterna para renderizar el juego completamente en la terminal.",
+			stack: "Java",
+			inDevelopment: false,
+			buttons: [
+				{
+					text: "Github",
+					url: "https://github.com/Guillermo-Mora/TermTetris",
+				},
+			],
+		},
+		{
+			title: "Guimor Music",
+			description: "Frontend visual de música.",
+			stack: "HTML, CSS, JavaScript",
+			inDevelopment: false,
+			buttons: [
+				{
+					text: "Github",
+					url: "https://github.com/Guillermo-Mora/guimor-web-music-player.github.io",
+				},
+				{
+					text: "Ver",
+					url: "https://guillermo-mora.github.io/guimor-web-music-player.github.io/",
+				},
+			],
+		},
+	],
+};
 
 const currentState =
-	"Open to junior roles and internships in Valencia or remote";
-
-const headerEntries = ["ABOUT", "EXPERIENCE", "PROJECTS", "CONNECT"];
+	"Abierto a puestos junior y prácticas en Valencia o en remoto";
 
 const aboutMessages = [
-	"I’m Guillermo Mora Mortes, a full-stack developer based in Valencia. I build useful, accessible software end to end, from the interface to the system running behind it.",
-	"Creative by nature and a Linux ",
-	" and servers enthusiast (I host my own at home :D), I like to understand how things work before making them my own.",
+	"Soy Guillermo Mora Mortes, desarrollador de software en Valencia. Construyo software útil y accesible de principio a fin, desde la interfaz hasta el sistema que hay detrás.",
+	"Creativo por naturaleza y entusiasta de Linux ",
+	" y de los servidores (tengo mi propio servidor en casa :D), me gusta entender cómo funcionan las cosas antes de hacerlas mías.",
 ];
 
 const spokenLanguages =
-	"I speak Spanish and Catalan natively, and English at an advanced level";
+	"Hablo español y catalán de forma nativa, e inglés a nivel avanzado.";
+
+const cv = {
+	cvSrc: cvSrc,
+	buttonText: "Ver CV",
+};
 ---
 
 <Index
@@ -217,5 +242,5 @@ const spokenLanguages =
 	,
 	projects={projects}
 	,
-	cvSrc={cv}
+	cv={cv}
 />

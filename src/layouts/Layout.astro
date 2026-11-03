@@ -7,7 +7,11 @@ import "../styles/global.css";
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta
+			name="google-site-verification"
+			content="ZwCfdD8h8o2EbgGHtGH-dy3xpTMEQJtAcgxCxplmxqg"
+		/>
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Guillermo Mora Mortes</title>
@@ -27,6 +31,20 @@ import "../styles/global.css";
 			})();
 		</script>
 	</head>
+	<!-- Google tag (gtag.js) -->
+	<script
+		is:inline
+		async
+		src="https://www.googletagmanager.com/gtag/js?id=G-HBXR94MSPB"></script>
+	<script is:inline>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag("js", new Date());
+
+		gtag("config", "G-HBXR94MSPB");
+	</script>
 	<body>
 		<slot />
 	</body>
