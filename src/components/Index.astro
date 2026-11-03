@@ -1,0 +1,158 @@
+---
+import SectionMain from "../components/SectionMain.astro";
+import Experience, { type Exp } from "../components/Experience.astro";
+import Education, { type Edu } from "../components/Education.astro";
+import Contact, { type Cont } from "../components/Contact.astro";
+import Layout from "../layouts/Layout.astro";
+import SectionProjects, {
+    type Project,
+} from "../components/SectionProjects.astro";
+import SectionFinal from "../components/SectionFinal.astro";
+import AboutTopContent, { type CV } from "../components/AboutTopContent.astro";
+import libreGuardiaImg from "../images/Liberguardia_Project.webp";
+import tennisUmpireImg from "../images/TennisUmpire_Project.webp";
+import karateSharpImg from "../images/KarateSharp_Project.webp";
+import termTetrisImg from "../images/termTetris.webp";
+import guimorMusicImg from "../images/GuimorMusicPlayer.webp";
+import tuxImg from "../images/TuxSmall.svg.webp";
+import { Image } from "astro:assets";
+import Stack, { type Sta } from "../components/Stack.astro";
+import CurrentState from "../components/CurrentState.astro";
+
+const images = [
+    libreGuardiaImg,
+    tennisUmpireImg,
+    karateSharpImg,
+    termTetrisImg,
+    guimorMusicImg,
+];
+
+interface Props {
+    stack: Sta;
+    experiences: Exp;
+    educations: Edu;
+    contacts: Cont;
+    currentState: string;
+    spokenLanguages: string;
+    headerEntries: string[];
+    aboutMessages: string[];
+    projects: Project;
+    cv: CV;
+}
+
+const {
+    stack,
+    experiences,
+    educations,
+    contacts,
+    currentState,
+    spokenLanguages,
+    headerEntries,
+    aboutMessages,
+    projects,
+    cv,
+} = Astro.props;
+---
+
+<Layout>
+    <header>
+        <nav>
+            <a href="#about">
+                <small>{headerEntries[0]}</small>
+            </a>
+            <a href="#experience">
+                <small>{headerEntries[1]}</small>
+            </a>
+            <a href="#projects">
+                <small>{headerEntries[2]}</small>
+            </a>
+            <a href="#connect">
+                <small>{headerEntries[3]}</small>
+            </a>
+        </nav>
+    </header>
+    <SectionMain>
+        <div class="about-me" id="about">
+            <AboutTopContent cv={cv} , />
+            <p>
+                {aboutMessages[0]}
+            </p>
+            <hr />
+            <p>
+                {aboutMessages[1]}<Image
+                    src={tuxImg}
+                    alt="TUX"
+                    loading="eager"
+                />{aboutMessages[2]}
+            </p>
+            <div class="spoken-languages">
+                <div></div>
+                <span>
+                    {spokenLanguages}
+                </span>
+            </div>
+            <CurrentState text={currentState} />
+        </div>
+        <Stack stack={stack}/>
+        <Experience experiences={experiences} />
+    </SectionMain>
+    <SectionProjects projects={projects} , images={images} />
+    <SectionFinal>
+        <Education educations={educations} />
+        <Contact contacts={contacts} />
+    </SectionFinal>
+</Layout>
+
+<style>
+    .spoken-languages {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        margin-bottom: 16px;
+        div {
+            flex-shrink: 0;
+            margin-top: 5px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--c2);
+            box-shadow: 3px 3px 0 0 var(--c4);
+        }
+    }
+    .about-me {
+        margin-top: 53px;
+    }
+    hr {
+        width: 75px;
+        border: 4px solid var(--c2);
+        box-shadow: 4px 4px 0 0 var(--c4);
+    }
+    header {
+        position: fixed;
+        inset: 0px 0px auto 0px;
+        width: auto;
+        margin: 16px 16px;
+        background-color: var(--c4);
+        box-shadow: 4px 4px 0 0 var(--c2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        nav {
+            margin: 16px 0;
+            padding: 0 16px;
+            max-width: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            gap: 1.5rem;
+            small {
+                font-size: 0.75rem;
+            }
+            a,
+            a:visited {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+    }
+</style>

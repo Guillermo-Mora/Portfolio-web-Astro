@@ -1,7 +1,12 @@
 ---
 import SectionTitle from "../components/SectionTitle.astro";
 
-interface Education {
+export interface Edu {
+    title: string;
+    sections: Section[];
+}
+
+interface Section {
     title: string;
     place: string;
     location: string;
@@ -10,17 +15,17 @@ interface Education {
 }
 
 interface Props {
-    educations: Education[];
+    educations: Edu;
 }
 
 const { educations } = Astro.props;
 ---
 
 <div id="education">
-    <SectionTitle title="EDUCATION" />
+    <SectionTitle title={educations.title} />
     <ul>
         {
-            educations.map((education) => (
+            educations.sections.map((education) => (
                 <li>
                     <div>
                         <div class="list-style" />

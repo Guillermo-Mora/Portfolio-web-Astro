@@ -2,6 +2,17 @@
 import guillermoMoraImg from "../images/guillermo-mora-mortes.jpg";
 import Terminal from "./Terminal.astro";
 import { Image } from "astro:assets";
+
+export interface CV {
+    cvSrc: string;
+    buttonText: string;
+}
+
+interface Props {
+    cv: CV;
+}
+
+const { cv } = Astro.props;
 ---
 
 <div class="container">
@@ -14,8 +25,8 @@ import { Image } from "astro:assets";
     <div class="terminal-cv">
         <Terminal />
         <div class="cv">
-            <a href="">
-                <small>CV</small>
+            <a href={cv.cvSrc} target="_blank">
+                <small>{cv.buttonText}</small>
             </a>
         </div>
     </div>

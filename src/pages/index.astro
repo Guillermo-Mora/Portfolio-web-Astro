@@ -1,298 +1,246 @@
 ---
-import SectionMain from "../components/SectionMain.astro";
-import Experience from "../components/Experience.astro";
-import Education from "../components/Education.astro";
-import Contact from "../components/Contact.astro";
-import Layout from "../layouts/Layout.astro";
-import SectionProjects from "../components/SectionProjects.astro";
-import SectionFinal from "../components/SectionFinal.astro";
-import AboutTopContent from "../components/AboutTopContent.astro";
-import libreGuardiaImg from "../images/Liberguardia_Project.webp";
-import tennisUmpireImg from "../images/TennisUmpire_Project.webp";
-import karateSharpImg from "../images/KarateSharp_Project.webp";
-import termTetrisImg from "../images/termTetris.webp";
-import guimorMusicImg from "../images/GuimorMusicPlayer.webp";
-import tuxImg from "../images/TuxSmall.svg.webp";
-import { Image } from "astro:assets";
-import Stack from "../components/Stack.astro";
-import CurrentState from "../components/CurrentState.astro";
+import Index from "../components/Index.astro";
+import cvSrc from "../pages/cv/CV_GuillermoMoraMortes_en.pdf";
 
-const stack = [
-	{
-		label: "LANGUAGES",
-		items: ["Kotlin", "Java", "Bash", "HTML", "CSS", "JavaScript"],
-	},
-	{
-		label: "MOBILE",
-		items: ["Android", "Jetpack Compose", "KMP", "Room"],
-	},
-	{
-		label: "BACKEND & DATA",
-		items: ["Ktor", "Spring Boot", "PostgreSQL", "MySQL"],
-	},
-	{
-		label: "TOOLS",
-		items: ["Linux", "Terminal", "Git", "GitHub", "Postman"],
-	},
-	{
-		label: "AI",
-		items: ["Claude", "DeepSeek"],
-	},
-];
+const headerEntries = ["ABOUT", "EXPERIENCE", "PROJECTS", "CONNECT"];
 
-const experiences = [
-	{
-		role: "Full-Stack Development [Internship]",
-		company: "UPV",
-		location: "Valencia, Spain",
-		summary:
-			"Designed and built a full-stack app from scratch to manage teacher absences and on-call duties for my school.",
-		date: "April - June 2026",
-	},
-	{
-		role: "Software Development & Business Intelligence [Internship]",
-		company: "Ahora Software",
-		location: "Valencia, Spain",
-		summary:
-			"Worked with BI tools, databases and frontend, and built low-code applications.",
-		date: "May 2025",
-	},
-	{
-		role: "Web Development & Technical Support [Internship]",
-		company: "Doctor Phone",
-		location: "Valencia, Spain",
-		summary:
-			"Built the shop's website and provided technical support: customer service, device repair and equipment maintenance.",
-		date: "April - June 2024",
-	},
-];
+const stack = {
+	title: "STACK",
+	groups: [
+		{
+			label: "LANGUAGES",
+			items: ["Kotlin", "Java", "SQL", "Bash", "HTML/CSS", "JavaScript"],
+		},
+		{
+			label: "MOBILE",
+			items: [
+				"Android",
+				"Jetpack Compose",
+				"Kotlin Multiplatform",
+				"Room",
+			],
+		},
+		{
+			label: "BACKEND & DATA",
+			items: [
+				"Ktor",
+				"Spring Boot",
+				"PostgreSQL",
+				"MySQL",
+				"Exposed",
+				"SQL Server",
+			],
+		},
+		{
+			label: "TOOLS",
+			items: [
+				"Linux",
+				"Terminal",
+				"Git/GitHub",
+				"Postman",
+				"Docker",
+				"Gradle",
+				"Testcontainers",
+			],
+		},
+		{
+			label: "AI",
+			items: ["Claude", "DeepSeek"],
+		},
+	],
+};
 
-const educations = [
-	{
-		title: "Higher Technician in Multi-platform Applications Development (DAM)",
-		place: "IES Serpis",
-		location: "Valencia, Spain",
-		date: "2024 - 2026",
-		grade: "8.94/10 - Distinction",
-	},
-	{
-		title: "Technician in Microcomputer Systems and Networks (SMR)",
-		place: "IES Serpis",
-		location: "Valencia, Spain",
-		date: "2022 - 2024",
-		grade: "8.92/10",
-	},
-	{
-		title: "Compulsory Secondary Education",
-		place: "IES La Patacona",
-		location: "Valencia, Spain",
-		date: "2017 - 2021",
-		grade: "8.2/10",
-	},
-];
+const experiences = {
+	title: headerEntries[1],
+	sections: [
+		{
+			role: "Full-Stack Development [Internship]",
+			company: "UPV",
+			location: "Valencia, Spain",
+			summary:
+				"Designed and built a full-stack app from scratch to manage teacher absences and on-call duties for my school.",
+			date: "April - June 2026",
+		},
+		{
+			role: "Software Development & Business Intelligence [Internship]",
+			company: "Ahora Software",
+			location: "Valencia, Spain",
+			summary:
+				"Worked with BI tools, databases and frontend, and built low-code applications.",
+			date: "May 2025",
+		},
+		{
+			role: "Web Development & Technical Support [Internship]",
+			company: "Doctor Phone",
+			location: "Valencia, Spain",
+			summary:
+				"Built the shop's website and provided technical support: customer service, device repair and equipment maintenance.",
+			date: "April - June 2024",
+		},
+	],
+};
 
-const contacts = [
-	{
-		profile: "guillermomora@tutamail.com",
-		url: "mailto:guillermomora@tutamail.com",
-	},
-	{
-		domain: "github.com",
-		profile: "Guillermo-Mora",
-		url: "https://github.com/Guillermo-Mora",
-	},
-	{
-		domain: "linkedin.com",
-		profile: "Guillermo-Mora",
-		url: "https://www.linkedin.com/in/guillermo-mora-mortes-b071a034a/",
-	},
-];
+const educations = {
+	title: "EDUCATION",
+	sections: [
+		{
+			title: "Higher Technician in Multi-platform Applications Development (DAM)",
+			place: "IES Serpis",
+			location: "Valencia, Spain",
+			date: "2024 - 2026",
+			grade: "8.94/10 - Distinction",
+		},
+		{
+			title: "Technician in Microcomputer Systems and Networks (SMR)",
+			place: "IES Serpis",
+			location: "Valencia, Spain",
+			date: "2022 - 2024",
+			grade: "8.92/10",
+		},
+		{
+			title: "Compulsory Secondary Education",
+			place: "IES La Patacona",
+			location: "Valencia, Spain",
+			date: "2017 - 2021",
+			grade: "8.2/10",
+		},
+	],
+};
 
-const projects = [
-	{
-		title: "LibreGuardia",
-		imageSrc: libreGuardiaImg,
-		description:
-			"Software for managing teacher absences and on-call duties in educational centers. Designed to centralize scheduling, track substitutions, and give staff a clear view of daily coverage needs.",
-		stack: "Kotlin, Ktor, Exposed, PostgreSQL, KMP, Jetpack Compose, Android",
-		buttons: [
-			{
-				text: "Github",
-				url: "https://github.com/Guillermo-Mora/libreguardia",
-			},
-		],
-	},
-	{
-		title: "Tennis Umpire",
-		imageSrc: tennisUmpireImg,
-		description:
-			"Native Android app for live tennis scoring and match management, with player and results tracking.",
-		stack: "Kotlin, Jetpack Compose, Room, Android",
-		buttons: [
-			{
-				text: "Github",
-				url: "https://github.com/Guillermo-Mora/TennisUmpire",
-			},
-		],
-	},
-	{
-		title: "Karate Sharp",
-		imageSrc: karateSharpImg,
-		description:
-			"Action-platformer where you control a karate fighter on a mission to rescue the city's heroes.",
-		stack: "Unity, C#",
-		buttons: [
-			{
-				text: "Github",
-				url: "https://github.com/Guillermo-Mora/Karate-Sharp",
-			},
-			{
-				text: "Play",
-				url: "https://play.unity.com/en/games/007d244b-08bd-49e4-8a24-b8cbff35e84f/web-karatesharp",
-			},
-		],
-	},
-	{
-		title: "TermTetris",
-		imageSrc: termTetrisImg,
-		description:
-			"A recreation of the classic Tetris, built in Java with the Lanterna library to render the game entirely in the terminal.",
-		stack: "Java",
-		buttons: [
-			{
-				text: "Github",
-				url: "https://github.com/Guillermo-Mora/TermTetris",
-			},
-		],
-	},
-	{
-		title: "Guimor Music",
-		imageSrc: guimorMusicImg,
-		description: "A visual music frontend.",
-		stack: "HTML, CSS, JavaScript",
-		buttons: [
-			{
-				text: "Github",
-				url: "https://github.com/Guillermo-Mora/guimor-web-music-player.github.io",
-			},
-			{
-				text: "View",
-				url: "https://guillermo-mora.github.io/guimor-web-music-player.github.io/",
-			},
-		],
-	},
-];
+const contacts = {
+	title: headerEntries[3],
+	sections: [
+		{
+			profile: "guillermomora@tutamail.com",
+			url: "mailto:guillermomora@tutamail.com",
+		},
+		{
+			domain: "github.com",
+			profile: "Guillermo-Mora",
+			url: "https://github.com/Guillermo-Mora",
+		},
+		{
+			domain: "linkedin.com",
+			profile: "Guillermo-Mora",
+			url: "https://www.linkedin.com/in/guillermo-mora-mortes-b071a034a/",
+		},
+	],
+};
+
+const projects = {
+	inDevelopmentText: "In development",
+	sections: [
+		{
+			title: "LibreGuardia",
+			description:
+				"Software for managing teacher absences and on-call duties in educational centers. Designed to centralize scheduling, track substitutions, and give staff a clear view of daily coverage needs.",
+			stack: "Kotlin, Ktor, Exposed, PostgreSQL, KMP, Jetpack Compose, Android",
+			inDevelopment: true,
+			buttons: [
+				{
+					text: "Github",
+					url: "https://github.com/Guillermo-Mora/libreguardia",
+				},
+			],
+		},
+		{
+			title: "Tennis Umpire",
+			description:
+				"Native Android app for live tennis scoring and match management, with player and results tracking.",
+			stack: "Kotlin, Jetpack Compose, Room, Android",
+			inDevelopment: true,
+			buttons: [
+				{
+					text: "Github",
+					url: "https://github.com/Guillermo-Mora/TennisUmpire",
+				},
+			],
+		},
+		{
+			title: "Karate Sharp",
+			description:
+				"Action-platformer where you control a karate fighter on a mission to rescue the city's heroes.",
+			stack: "Unity, C#",
+			inDevelopment: false,
+			buttons: [
+				{
+					text: "Github",
+					url: "https://github.com/Guillermo-Mora/Karate-Sharp",
+				},
+				{
+					text: "Play",
+					url: "https://play.unity.com/en/games/007d244b-08bd-49e4-8a24-b8cbff35e84f/web-karatesharp",
+				},
+			],
+		},
+		{
+			title: "TermTetris",
+			description:
+				"A recreation of the classic Tetris, built in Java with the Lanterna library to render the game entirely in the terminal.",
+			stack: "Java",
+			inDevelopment: false,
+			buttons: [
+				{
+					text: "Github",
+					url: "https://github.com/Guillermo-Mora/TermTetris",
+				},
+			],
+		},
+		{
+			title: "Guimor Music",
+			description: "A visual music frontend.",
+			stack: "HTML, CSS, JavaScript",
+			inDevelopment: false,
+			buttons: [
+				{
+					text: "Github",
+					url: "https://github.com/Guillermo-Mora/guimor-web-music-player.github.io",
+				},
+				{
+					text: "View",
+					url: "https://guillermo-mora.github.io/guimor-web-music-player.github.io/",
+				},
+			],
+		},
+	],
+};
 
 const currentState =
 	"Open to junior roles and internships in Valencia or remote";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const aboutMessages = [
+	"I’m Guillermo Mora Mortes, a full-stack developer based in Valencia. I build useful, accessible software end to end, from the interface to the system running behind it.",
+	"Creative by nature and a Linux ",
+	" and servers enthusiast (I host my own at home :D), I like to understand how things work before making them my own.",
+];
+
+const spokenLanguages =
+	"I speak Spanish and Catalan natively, and English at an advanced level";
+
+const cv = {
+	cvSrc: cvSrc,
+	buttonText: "View CV",
+};
 ---
 
-<Layout>
-	<header>
-		<nav>
-			<a href="#about">
-				<small>ABOUT</small>
-			</a>
-			<a href="#experience">
-				<small>EXPERIENCE</small>
-			</a>
-			<a href="#projects">
-				<small>PROJECTS</small>
-			</a>
-			<a href="#connect">
-				<small>CONNECT</small>
-			</a>
-		</nav>
-	</header>
-	<SectionMain>
-		<div class="about-me" id="about">
-			<AboutTopContent />
-			<p>
-				I’m Guillermo Mora Mortes, a full-stack developer based in
-				Valencia. I build useful, accessible software end to end, from
-				the interface to the system running behind it.
-			</p>
-			<hr />
-			<p>
-				Creative by nature and a Linux <Image
-					src={tuxImg}
-					alt="TUX"
-					loading="eager"
-				/> and servers enthusiast (I host my own at home :D), I like to understand
-				how things work, and then make them feel like mine.
-			</p>
-			<div class="spoken-languages">
-				<div></div>
-				<span>
-					I speak Spanish and Catalan natively, and English at an
-					advanced level.
-				</span>
-			</div>
-			<CurrentState text={currentState} />
-		</div>
-		<Stack groups={stack} note="" />
-		<Experience experiences={experiences} />
-	</SectionMain>
-	<SectionProjects projects={projects} />
-	<SectionFinal>
-		<Education educations={educations} />
-		<Contact contacts={contacts} />
-	</SectionFinal>
-</Layout>
-
-<style>
-	.spoken-languages {
-		display: flex;
-		flex-direction: row;
-		gap: 16px;
-		margin-bottom: 16px;
-		div {
-			flex-shrink: 0;
-			margin-top: 5px;
-			width: 8px;
-			height: 8px;
-			background-color: var(--c2);
-			box-shadow: 3px 3px 0 0 var(--c4);
-		}
-	}
-	.about-me {
-		margin-top: 53px;
-	}
-	hr {
-		width: 75px;
-		border: 4px solid var(--c2);
-		box-shadow: 4px 4px 0 0 var(--c4);
-	}
-	header {
-		position: fixed;
-		inset: 0px 0px auto 0px;
-		width: auto;
-		margin: 16px 16px;
-		background-color: var(--c4);
-		box-shadow: 4px 4px 0 0 var(--c2);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		nav {
-			margin: 16px 0;
-			padding: 0 16px;
-			max-width: 700px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-direction: row;
-			gap: 1.5rem;
-			small {
-				font-size: 0.75rem;
-			}
-			a,
-			a:visited {
-				color: inherit;
-				text-decoration: none;
-			}
-		}
-	}
-</style>
+<Index
+	stack={stack}
+	,
+	experiences={experiences}
+	,
+	educations={educations}
+	,
+	contacts={contacts}
+	,
+	currentState={currentState}
+	,
+	spokenLanguages={spokenLanguages}
+	,
+	headerEntries={headerEntries}
+	,
+	aboutMessages={aboutMessages}
+	,
+	projects={projects}
+	,
+	cv={cv}
+/>

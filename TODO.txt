@@ -16,9 +16,9 @@ Una sección de skills o tecnologías. Ahora el stack solo aparece suelto dentro
 
 
 - Un CV descargable. Es lo primero que suele buscar un reclutador y ahora no hay ninguno.
-
-- Soporte multiidioma basado en el lenguaje del navegador automáticamente
-
+- Soporte multiidioma basado en el lenguaje del navegador automáticamente (Español e Inglés).
+- Añadir icono a la página.
+- Añadir etiquetas de SEO de mi página original y el google console.
 
 Contenido de proyectos y experiencia
 

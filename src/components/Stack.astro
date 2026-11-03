@@ -1,24 +1,28 @@
 ---
 import SectionTitle from "./SectionTitle.astro";
 
+export interface Sta {
+    title: string;
+    groups: Group[];
+}
+
 interface Group {
     label: string;
     items: string[];
 }
 
 interface Props {
-    groups: Group[];
-    note?: string;
+    stack: Sta;
 }
 
-const { groups, note } = Astro.props;
+const { stack } = Astro.props;
 ---
 
 <div>
-    <SectionTitle title="STACK" />
+    <SectionTitle title={stack.title} />
     <div class="stack">
         {
-            groups.map((group) => (
+            stack.groups.map((group) => (
                 <div class="row">
                     <small class="label">{group.label}</small>
                     <ul class="tags" aria-label={group.label}>
@@ -32,7 +36,6 @@ const { groups, note } = Astro.props;
             ))
         }
     </div>
-    {note && <small class="note">{note}</small>}
 </div>
 
 <style>
@@ -45,7 +48,7 @@ const { groups, note } = Astro.props;
 
     .row {
         display: grid;
-        grid-template-columns: 8rem 1fr;
+        grid-template-columns: 1fr;
         gap: 0.5rem 0.25rem;
         align-items: start;
     }
@@ -53,7 +56,6 @@ const { groups, note } = Astro.props;
     .label {
         font-weight: bold;
         color: var(--c3);
-        padding-top: 4px;
     }
 
     .tags {
@@ -77,14 +79,5 @@ const { groups, note } = Astro.props;
         margin-top: 0.5rem;
         font-size: 0.75rem;
         color: var(--c3);
-    }
-
-    @media (max-width: 600px) {
-        .row {
-            grid-template-columns: 1fr;
-        }
-        .label {
-            padding-top: 0;
-        }
     }
 </style>

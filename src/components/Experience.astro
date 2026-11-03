@@ -1,7 +1,12 @@
 ---
 import SectionTitle from "../components/SectionTitle.astro";
 
-interface Experience {
+export interface Exp {
+    title: string;
+    sections: Section[];
+}
+
+interface Section {
     role: string;
     company: string;
     location: string;
@@ -10,17 +15,17 @@ interface Experience {
 }
 
 interface Props {
-    experiences: Experience[];
+    experiences: Exp;
 }
 
 const { experiences } = Astro.props;
 ---
 
 <div id="experience">
-    <SectionTitle title="EXPERIENCE" />
+    <SectionTitle title={experiences.title} />
     <ul>
         {
-            experiences.map((experience) => (
+            experiences.sections.map((experience) => (
                 <li>
                     <div>
                         <div class="list-style" />
@@ -93,7 +98,7 @@ const { experiences } = Astro.props;
         white-space: nowrap;
     }
     @media (max-width: 500px) {
-        .place-date{
+        .place-date {
             flex-direction: column;
             gap: 0.25;
         }

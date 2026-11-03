@@ -1,11 +1,14 @@
 ---
-import { Image } from "astro:assets";
+export interface Project {
+    sections: Section[];
+    inDevelopmentText: string;
+}
 
-interface Project {
+interface Section {
     title: string;
-    imageSrc?: ImageMetadata;
     description: string;
     stack: string;
+    inDevelopment: boolean;
     buttons?: ButtonOption[];
 }
 
@@ -15,10 +18,11 @@ interface ButtonOption {
 }
 
 interface Props {
-    projects: Project[];
+    projects: Project;
+    images: ImageMetadata[];
 }
 
-const { projects } = Astro.props;
+const { projects, images } = Astro.props;
 
 const splitStack = (stack: string) =>
     stack
@@ -31,20 +35,23 @@ const splitStack = (stack: string) =>
     <div class="content-container" id="projects">
         <ul class="projects">
             {
-                projects.map((project) => (
+                projects.sections.map((project, imageIndex) => (
                     <li>
                         <article class="project">
-                            {project.imageSrc && (
-                                <img
-                                    class="project-image"
-                                    src={project.imageSrc.src}
-                                    alt={`Screenshot of ${project.title}`}
-                                    loading="lazy"
-                                    decoding="async"
-                                />
-                            )}
+                            <img
+                                class="project-image"
+                                src={images[imageIndex].src}
+                                alt={`Screenshot of ${project.title}`}
+                                loading="lazy"
+                                decoding="async"
+                            />
                             <div class="project-body">
                                 <h3 class="project-title">{project.title}</h3>
+                                {project.inDevelopment === true && (
+                                    <small>
+                                        [{projects.inDevelopmentText}]
+                                    </small>
+                                )}
                                 <p class="project-description">
                                     {project.description}
                                 </p>

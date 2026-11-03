@@ -1,24 +1,29 @@
 ---
 import SectionTitle from "../components/SectionTitle.astro";
 
-interface Contact {
+export interface Cont {
+    title: string;
+    sections: Section[];
+}
+
+interface Section {
     domain?: string;
     profile: string;
     url: string;
 }
 
 interface Props {
-    contacts: Contact[];
+    contacts: Cont;
 }
 
 const { contacts } = Astro.props;
 ---
 
 <div id="connect">
-    <SectionTitle title="CONNECT" />
+    <SectionTitle title={contacts.title} />
     <ul>
         {
-            contacts.map((contact) => (
+            contacts.sections.map((contact) => (
                 <li>
                     <a href={contact.url}, target="_blank">
                         {contact.domain != null ? (
